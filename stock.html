@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Interface</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 min-h-screen flex justify-center items-center">
+    <div class="bg-white rounded-xl shadow-lg w-[1200px] p-8">
+        <!-- Sidebar -->
+        <div class="flex">
+            <div class="w-1/5 border-r border-gray-200 pr-6">
+                <div class="text-blue-500 font-bold text-xl mb-6">Logo</div>
+                <nav class="flex flex-col space-y-6">
+                    <a href="#" class="flex items-center text-gray-600 hover:text-blue-500">
+                        <span class="material-icons mr-2">home</span> Home
+                    </a>
+                    <a href="#" class="flex items-center text-gray-600 hover:text-blue-500">
+                        <span class="material-icons mr-2">trending_up</span> Analytics
+                    </a>
+                    <a href="#" class="flex items-center text-gray-600 hover:text-blue-500">
+                        <span class="material-icons mr-2">account_balance_wallet</span> Portfolio
+                    </a>
+                </nav>
+            </div>
+            <!-- Main Content -->
+            <div class="w-4/5 pl-6">
+                <header class="flex justify-between items-center mb-8">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-700">Hi, Robert!</h1>
+                        <p class="text-gray-500">December 28, 2022</p>
+                    </div>
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow">Need help using the app?</button>
+                </header>
+                <!-- Balance Section -->
+                <div class="bg-gray-100 rounded-lg p-6 mb-8">
+                    <h2 class="text-xl font-bold text-gray-700 mb-4">Total Balance</h2>
+                    <div class="flex items-center justify-between">
+                        <span class="text-3xl font-bold text-gray-900">$49,102.94</span>
+                        <span class="text-green-500 font-semibold">+4.25%</span>
+                    </div>
+                    <div class="mt-4 flex space-x-4">
+                        <div class="flex-1">
+                            <div class="text-gray-600">Cash</div>
+                            <div class="font-semibold">$38,840.02</div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-gray-600">AAPL</div>
+                            <div class="font-semibold">$6,921.00</div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-gray-600">TSLA</div>
+                            <div class="font-semibold">$4,201.00</div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-gray-600">SNAP</div>
+                            <div class="font-semibold">$1,102.00</div>
+                        </div>
+                    </div>
+                    <!-- Balance Meter -->
+                    <div class="mt-6">
+                        <div class="h-4 bg-gray-200 rounded-full flex overflow-hidden">
+                            <div class="h-full bg-blue-500" style="width: 70%;"></div>
+                            <div class="h-full bg-green-500" style="width: 15%;"></div>
+                            <div class="h-full bg-yellow-500" style="width: 10%;"></div>
+                            <div class="h-full bg-red-500" style="width: 5%;"></div>
+                        </div>
+                        <div class="flex justify-between mt-2 text-sm text-gray-600">
+                            <span>Cash</span>
+                            <span>AAPL</span>
+                            <span>TSLA</span>
+                            <span>SNAP</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Summary and Stocks -->
+                <div class="grid grid-cols-2 gap-6">
+                    <!-- Monthly Summary -->
+                    <div class="bg-gray-200 rounded-lg p-6">
+                        <h2 class="text-xl font-bold text-gray-700 mb-4">Monthly In and Out</h2>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex items-center space-x-2">
+                                <div class="bg-gray-300 rounded-md p-4">
+                                    <div class="text-gray-600">Total In</div>
+                                    <div class="text-blue-500 font-bold text-lg">$1,593</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="bg-gray-300 rounded-md p-4">
+                                    <div class="text-gray-600">Total Out</div>
+                                    <div class="text-red-500 font-bold text-lg">$1,192</div>
+                                </div>
+                            </div>
+                        </div>
+                        <canvas id="modernBarChart" class="w-full h-64"></canvas>
+                    </div>
+                    <!-- Popular Stocks -->
+                    <div class="bg-gray-100 rounded-lg p-6">
+                        <h2 class="text-xl font-bold text-gray-700 mb-4">Popular Stocks</h2>
+                        <table class="w-full text-left">
+                            <thead>
+                                <tr class="text-gray-500">
+                                    <th class="py-2">Icon</th>
+                                    <th class="py-2">Name</th>
+                                    <th class="py-2">Price</th>
+                                    <th class="py-2">Change</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="py-2">
+                                        <img src="tesla.png" alt="TSLA" class="w-6 h-6"/>
+                                    </td>
+                                    <td class="py-2">TSLA</td>
+                                    <td class="py-2" id="price-tsla">$107.00</td>
+                                    <td class="py-2 text-red-500">-16.23</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2">
+                                        <img src="apple.png" alt="AAPL" class="w-6 h-6"/>
+                                    </td>
+                                    <td class="py-2">AAPL</td>
+                                    <td class="py-2" id="price-aapl">$124.78</td>
+                                    <td class="py-2 text-green-500">+5.17</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2">
+                                        <img src="logo.png" alt="AMZN" class="w-6 h-6"/>
+                                    </td>
+                                    <td class="py-2">AMZN</td>
+                                    <td class="py-2" id="price-amzn">$84.48</td>
+                                    <td class="py-2 text-green-500">+0.48</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modernCtx = document.getElementById('modernBarChart').getContext('2d');
+        new Chart(modernCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Total In', 'Total Out'],
+                datasets: [{
+                    label: 'Amount',
+                    data: [1593, 1192],
+                    backgroundColor: ['#5D9CEC', '#A6C9F8'], // Blue and Light Blue
+                    borderRadius: 12, // Rounded corners
+                    barThickness: 30, // Bar width
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false // Hides legend for cleaner design
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false // Remove X-axis grid lines
+                        },
+                        ticks: {
+                            color: '#4A4A4A',
+                            font: {
+                                size: 14
+                            }
+                        }
+                    },
+                    y: {
+                        grid: {
+                            color: '#E0E0E0', // Light gray grid lines
+                            lineWidth: 1
+                        },
+                        ticks: {
+                            color: '#4A4A4A',
+                            font: {
+                                size: 12
+                            },
+                            beginAtZero: true
+                        }
+                    }
+                },
+                layout: {
+                    padding: {
+                        top: 20,
+                        bottom: 20
+                    }
+                },
+                elements: {
+                    bar: {
+                        borderSkipped: false // Ensures bars are fully rounded
+                    }
+                }
+            }
+        });
+
+        // Stock price animations
+        function animateStockPrice(elementId, startValue, endValue, duration) {
+            let startTime = null;
+            const element = document.getElementById(elementId);
+
+            function updatePrice(currentTime) {
+                if (!startTime) startTime = currentTime;
+                const progress = (currentTime - startTime) / duration;
+                const currentValue = startValue + (endValue - startValue) * progress;
+                element.textContent = `$${currentValue.toFixed(2)}`;
+                if (progress < 1) {
+                    requestAnimationFrame(updatePrice);
+                }
+            }
+
+            requestAnimationFrame(updatePrice);
+        }
+
+        animateStockPrice('price-tsla', 100, 107, 2000);
+        animateStockPrice('price-aapl', 120, 124.78, 2000);
+        animateStockPrice('price-amzn', 80, 84.48, 2000);
+    </script>
+</body>
+</html>

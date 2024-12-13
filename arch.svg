@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" class="w-full">
+    <style>
+        .box { fill: #f0f4f8; stroke: #4a90e2; stroke-width: 2; }
+        .text { font-family: Arial, sans-serif; font-size: 14px; }
+        .arrow { marker-end: url(#arrowhead); }
+    </style>
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#4a90e2"/>
+        </marker>
+    </defs>
+
+    <rect x="50" y="50" width="700" height="400" rx="10" ry="10" class="box" fill-opacity="0.5"/>
+    <text x="400" y="90" text-anchor="middle" class="text font-bold" font-size="18">VESTORIX: Public System Architecture</text>
+
+    <g transform="translate(100, 150)">
+        <rect x="0" y="0" width="200" height="100" rx="5" ry="5" class="box"/>
+        <text x="100" y="30" text-anchor="middle" class="text font-bold">Data Ingestion</text>
+        <text x="100" y="50" text-anchor="middle" class="text">• Market APIs</text>
+        <text x="100" y="70" text-anchor="middle" class="text">• Public Data Sources</text>
+    </g>
+
+    <g transform="translate(400, 150)">
+        <rect x="0" y="0" width="200" height="100" rx="5" ry="5" class="box"/>
+        <text x="100" y="30" text-anchor="middle" class="text font-bold">Feature Engineering</text>
+        <text x="100" y="50" text-anchor="middle" class="text">• Sentiment Analysis</text>
+        <text x="100" y="70" text-anchor="middle" class="text">• Technical Indicators</text>
+    </g>
+
+    <g transform="translate(250, 300)">
+        <rect x="0" y="0" width="300" height="100" rx="5" ry="5" class="box"/>
+        <text x="150" y="30" text-anchor="middle" class="text font-bold">Predictive Modeling</text>
+        <text x="150" y="50" text-anchor="middle" class="text">• Ensemble Learning</text>
+        <text x="150" y="70" text-anchor="middle" class="text">• Multi-Objective Optimization</text>
+    </g>
+
+    <path d="M200,250 Q300,270 300,300" class="arrow" fill="none" stroke="#4a90e2"/>
+    <path d="M500,250 Q400,270 400,300" class="arrow" fill="none" stroke="#4a90e2"/>
+    <path d="M400,400 L400,450 Q400,470 380,470 L100,470 Q80,470 80,450 L80,250" class="arrow" fill="none" stroke="#4a90e2"/>
+
+    <text x="400" y="490" text-anchor="middle" class="text" font-size="12">Confidential Details Omitted</text>
+</svg>

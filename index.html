@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vestorix - Your AI Financial Advisor</title>
+  <!-- CSS Frameworks and Libraries -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f8f9fa;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #ffffff;
+      color: #333;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #007bff;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #007bff;
+    }
+
+    .btn-signup {
+      background: #007bff;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      border: none;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+
+    .btn-signup:hover {
+      background: #0056b3;
+    }
+
+    @keyframes typewriter {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .typewriter h1 {
+      overflow: hidden;
+      border-right: 2px solid #000;
+      white-space: nowrap;
+      margin: 0 auto;
+      display: inline-block;
+      animation: none;
+    }
+
+    .animate-fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    footer {
+      background: #f8f9fa;
+      color: #333;
+      text-align: center;
+      padding: 1rem;
+      border-top: 1px solid #dee2e6;
+    }
+
+    .fade-in {
+      animation: fadeIn 1.5s ease-in forwards;
+      opacity: 0;
+    }
+    .stock-hover:hover {
+      transform: translateY(-10px) scale(1.05);
+      transition: transform 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .line {
+            position: absolute;
+            width: 2px;
+            background-color: #d1d5db;
+            transform-origin: top left;
+        }
+        .animate-fade {
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .testimonial-container {
+            position: relative;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .testimonial {
+            position: absolute;
+            transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+            opacity: 0.4;
+            transform: scale(0.7);
+            z-index: 1;
+        }
+
+        .testimonial.active {
+            position: relative;
+            opacity: 1;
+            transform: scale(1);
+            z-index: 10;
+        }
+
+        .testimonial:nth-child(1):not(.active) {
+            left: -40%;
+            transform: scale(0.6) rotate(-10deg);
+        }
+
+        .testimonial:nth-child(3):not(.active) {
+            right: -40%;
+            transform: scale(0.6) rotate(10deg);
+        }
+
+        /* Smooth fade and scale transition */
+        @keyframes fadeInOut {
+            0%, 25% { 
+                opacity: 1; 
+                transform: scale(1);
+            }
+            30%, 100% { 
+                opacity: 0.4; 
+                transform: scale(0.7);
+            }
+        }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">Vestorix</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="about.html">About</a>
+      <a href="#info">Features</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative flex flex-col lg:flex-row items-center py-16 px-4 lg:px-32 space-y-8 lg:space-y-0 lg:space-x-16">
+    <!-- Text Content -->
+    <div id="hero" class="text-center lg:text-left lg:w-1/2">
+      <div class="mb-4 inline-block px-3 py-1 bg-gray-100 text-blue-600 text-sm rounded-full">Introducing Vestorix</div>
+      <div class="typewriter">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4" id="typewriter-text"></h1>
+      </div>
+      <p class="text-gray-600 max-w-2xl mx-auto lg:mx-0 mb-8">Vestorix is a cutting-edge AI model tailored to deliver precise investment advice, analyze intricate trading patterns, and generate highly accurate financial predictions for informed decision-making.</p>
+      <div class="flex justify-center lg:justify-start space-x-4">
+        <a href="blog.html" class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700">Read Documentation</a>
+        <a href="#" class="bg-gray-200 text-gray-800 px-6 py-3 rounded-lg shadow hover:bg-gray-300">Learn More</a>
+      </div>
+      </div>
+    </div>
+
+    <!-- 3D Illustration -->
+    <div class="lg:w-1/2 animate-fade-in">
+      <img src="hero.png" alt="Fintech 3D Illustration" class="w-full h-auto">
+    </div>
+  </section>
+  <div id="dashboard" class="bg-gray-100 min-h-screen flex justify-center items-center">
+    <div class="bg-white rounded-xl shadow-lg w-full max-w-[1200px] p-8">
+        <!-- Sidebar -->
+        <div class="flex flex-col md:flex-row">
+            <div class="w-full md:w-1/5 border-r border-gray-200 pr-6 mb-6 md:mb-0">
+                <div class="text-blue-500 font-bold text-xl mb-6">Vestorix</div>
+                <nav class="flex flex-col space-y-6">
+                    <a href="#" class="flex items-center text-gray-600 hover:text-blue-500">
+                        <span class="material-icons mr-2">home</span> Home
+                    </a>
+                    <a href="#" class="flex items-center text-gray-600 hover:text-blue-500">
+                        <span class="material-icons mr-2">trending_up</span> Analytics
+                    </a>
+                    <a href="#" class="flex items-center text-gray-600 hover:text-blue-500">
+                        <span class="material-icons mr-2">account_balance_wallet</span> Portfolio
+                    </a>
+                </nav>
+            </div>
+            <!-- Main Content -->
+            <div class="w-full md:w-4/5 md:pl-6">
+                <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-700">Hi, Robert!</h1>
+                        <p class="text-gray-500">December 31, 2024</p>
+                    </div>
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow mt-4 md:mt-0">Need help using the app?</button>
+                </header>
+                <!-- Balance Section -->
+                <div class="bg-gray-100 rounded-lg p-6 mb-8">
+                    <h2 class="text-xl font-bold text-gray-700 mb-4">Total Balance</h2>
+                    <div class="flex flex-wrap items-center justify-between">
+                        <span id="totalBalance" class="text-3xl font-bold text-gray-900">$0.00</span>
+                        <span id="balanceChange" class="text-green-500 font-semibold">+0.00%</span>
+                    </div>
+                    <div class="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        <div>
+                            <div class="text-gray-600">Cash</div>
+                            <div id="cashBalance" class="font-semibold">$0.00</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-600">AAPL</div>
+                            <div id="aaplBalance" class="font-semibold">$0.00</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-600">TSLA</div>
+                            <div id="tslaBalance" class="font-semibold">$0.00</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-600">SNAP</div>
+                            <div id="snapBalance" class="font-semibold">$0.00</div>
+                        </div>
+                    </div>
+                    <!-- Balance Meter -->
+                    <div class="mt-6">
+                        <div id="balanceMeter" class="h-4 bg-gray-200 rounded-full flex overflow-hidden">
+                            <div class="h-full bg-blue-500" style="width: 0%;"></div>
+                            <div class="h-full bg-green-500" style="width: 0%;"></div>
+                            <div class="h-full bg-yellow-500" style="width: 0%;"></div>
+                            <div class="h-full bg-red-500" style="width: 0%;"></div>
+                        </div>
+                        <div class="flex justify-between mt-2 text-sm text-gray-600">
+                            <span>Cash</span>
+                            <span>AAPL</span>
+                            <span>TSLA</span>
+                            <span>SNAP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary and Stocks -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Monthly Summary -->
+                    <div class="bg-gray-200 rounded-lg p-6">
+                        <h2 class="text-xl font-bold text-gray-700 mb-4">Monthly In and Out</h2>
+                        <div class="flex flex-wrap justify-between items-center mb-4">
+                            <div class="flex items-center space-x-2">
+                                <div class="bg-gray-300 rounded-md p-4">
+                                    <div class="text-gray-600">Total In</div>
+                                    <div class="text-blue-500 font-bold text-lg">$1,593</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="bg-gray-300 rounded-md p-4">
+                                    <div class="text-gray-600">Total Out</div>
+                                    <div class="text-red-500 font-bold text-lg">$1,192</div>
+                                </div>
+                            </div>
+                        </div>
+                        <canvas id="modernBarChart" class="w-full h-64"></canvas>
+                    </div>
+                    <!-- Popular Stocks -->
+                    <div class="bg-gray-100 rounded-lg p-6">
+                        <h2 class="text-xl font-bold text-gray-700 mb-4">Popular Stocks</h2>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead>
+                                    <tr class="text-gray-500">
+                                        <th class="py-2">Icon</th>
+                                        <th class="py-2">Name</th>
+                                        <th class="py-2">Price</th>
+                                        <th class="py-2">Change</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="py-2">
+                                            <img src="tesla.png" alt="TSLA" class="w-6 h-6" />
+                                        </td>
+                                        <td class="py-2">TSLA</td>
+                                        <td class="py-2" id="price-tsla">$107.00</td>
+                                        <td class="py-2 text-red-500">-16.23</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2">
+                                            <img src="apple.png" alt="AAPL" class="w-6 h-6" />
+                                        </td>
+                                        <td class="py-2">AAPL</td>
+                                        <td class="py-2" id="price-aapl">$124.78</td>
+                                        <td class="py-2 text-green-500">+5.17</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2">
+                                            <img src="logo.png" alt="AMZN" class="w-6 h-6" />
+                                        </td>
+                                        <td class="py-2">AMZN</td>
+                                        <td class="py-2" id="price-amzn">$84.48</td>
+                                        <td class="py-2 text-green-500">+0.48</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+  <div id="info" class="bg-white">
+    <section class="flex justify-center items-center text-white min-h-screen">
+      <div class="relative bg-gray-900 text-white rounded-3xl shadow-lg p-10 flex flex-col md:flex-row items-center md:items-start max-w-5xl w-full fade-in">
+        <!-- Left Section -->
+        <div class="flex-1 text-center md:text-left">
+          <span class="text-sm font-medium text-blue-400 bg-blue-900 bg-opacity-20 py-1 px-3 rounded-full">About FinFlow</span>
+          <h1 class="text-4xl font-bold mt-4 leading-snug">Our mission is to look after the financial best interests<br>with automation</h1>
+          <p class="text-gray-400 mt-4">Experience the future of financial advice with Vestorix, where AI-driven analysis meets human expertise to deliver personalized, data-driven guidance for investors seeking smarter, more informed decision-making.</p>
+          <div class="mt-6">
+            <a href="#" class="bg-blue-500 text-white py-3 px-8 rounded-lg hover:bg-blue-600 transition">Learn More</a>
+          </div>
+        </div>
+  
+        <!-- Right Section -->
+        <div class="flex-1 mt-10 md:mt-0 md:ml-10 grid grid-cols-2 gap-4">
+          <a href="#" target="_blank" class="flex items-center space-x-4 bg-gray-800 bg-opacity-60 p-4 rounded-lg transform -rotate-3 stock-hover">
+            <div class="w-10 h-10 bg-gray-700 bg-opacity-70 rounded-full flex items-center justify-center">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Amazon_icon.png" alt="Amazon" class="w-8 h-8">
+            </div>
+            <span class="text-gray-300 font-medium">AMZN</span>
+          </a>
+          <a href="#" target="_blank" class="flex items-center space-x-4 bg-gray-800 bg-opacity-60 p-4 rounded-lg transform rotate-2 stock-hover">
+            <div class="w-10 h-10 bg-gray-700 bg-opacity-70 rounded-full flex items-center justify-center">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" class="w-8 h-8">
+            </div>
+            <span class="text-gray-300 font-medium">MSFT Microsoft</span>
+          </a>
+          <a href="#" target="_blank" class="flex items-center space-x-4 bg-gray-800 bg-opacity-60 p-4 rounded-lg transform -rotate-1 stock-hover">
+            <div class="w-10 h-10 bg-gray-700 bg-opacity-70 rounded-full flex items-center justify-center">
+              <img src="starbucks.png" alt="Starbucks" class="w-8 h-8">
+            </div>
+            <span class="text-gray-300 font-medium">SBUX Starbucks</span>
+          </a>
+          <a href="#" target="_blank" class="flex items-center space-x-4 bg-gray-800 bg-opacity-60 p-4 rounded-lg transform rotate-3 stock-hover">
+            <div class="w-10 h-10 bg-gray-700 bg-opacity-70 rounded-full flex items-center justify-center">
+              <img src="block.png" alt="Block" class="w-8 h-8">
+            </div>
+            <span class="text-gray-300 font-medium">SQ Block Inc.</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <div id="info2" class="bg-gray-100">
+    <section class="flex flex-col md:flex-row justify-center items-center gap-6 py-12 px-6 relative">
+        <!-- Left Card -->
+        <div class="bg-blue-600 text-white rounded-xl shadow-lg p-6 w-full md:w-1/3 animate-fade">
+            <h2 class="text-xl font-semibold mb-4">Earn way more on savings</h2>
+            <p class="text-sm mb-6">
+                Transform your investment strategy with Vestorix, leveraging cutting-edge AI technology to provide actionable insights, expert guidance, and unparalleled financial clarity
+            </p>
+            <div class="text-4xl font-bold flex items-baseline">
+                <span>92.2</span>
+                <span class="text-lg ml-2">ROI</span>
+            </div>
+        </div>
+
+        <!-- Right Card -->
+        <div class="bg-white text-gray-900 rounded-xl shadow-lg p-6 w-full md:w-1/3 animate-fade">
+            <h2 class="text-xl font-semibold mb-4">Build your wealth with Vestorix</h2>
+            <p class="text-sm mb-6 font-bold">Targeting 100,000+ users worldwide!</p>
+            <div class="relative w-full h-64">
+                <!-- User Avatars Arranged in a Network -->
+                <img src="https://i.pravatar.cc/100?img=1" alt="User 1" class="absolute w-12 h-12 rounded-full bg-gray-300" style="top: 20px; left: 50%; transform: translateX(-50%);">
+                <img src="https://i.pravatar.cc/100?img=2" alt="User 2" class="absolute w-12 h-12 rounded-full bg-gray-300" style="top: 150px; left: 30%; transform: translateX(-50%);">
+                <img src="https://i.pravatar.cc/100?img=3" alt="User 3" class="absolute w-12 h-12 rounded-full bg-gray-300" style="top: 150px; right: 30%; transform: translateX(50%);">
+                <img src="https://i.pravatar.cc/100?img=4" alt="User 4" class="absolute w-12 h-12 rounded-full bg-gray-300" style="top: 80px; left: 20%; transform: translateX(-50%);">
+                <img src="https://i.pravatar.cc/100?img=5" alt="User 5" class="absolute w-12 h-12 rounded-full bg-gray-300" style="top: 80px; right: 20%; transform: translateX(50%);">
+
+                
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<div id="info3" class="bg-gray-100">
+  <div class="flex items-center justify-center min-h-screen px-4">
+    <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col md:flex-row w-full max-w-6xl">
+      <!-- Left Section -->
+      <div class="w-full md:w-1/2 mb-8 md:mb-0">
+        <h2 class="text-xl font-bold mb-6">Risk Evaluation</h2>
+        <div class="mb-4">
+          <div class="flex justify-between mb-1">
+            <span>Indian Stocks</span>
+            <span class="text-gray-600">45%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2.5">
+            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 45%;"></div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <div class="flex justify-between mb-1">
+            <span>Foreign Stocks</span>
+            <span class="text-gray-600">25%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2.5">
+            <div class="bg-teal-400 h-2.5 rounded-full" style="width: 25%;"></div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <div class="flex justify-between mb-1">
+            <span>Emerging Markets</span>
+            <span class="text-gray-600">25%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2.5">
+            <div class="bg-indigo-500 h-2.5 rounded-full" style="width: 25%;"></div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <div class="flex justify-between mb-1">
+            <span>Dividend Stocks</span>
+            <span class="text-gray-600">9%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2.5">
+            <div class="bg-pink-400 h-2.5 rounded-full" style="width: 9%;"></div>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <div class="flex justify-between mb-1">
+            <span>Municipal Bonds</span>
+            <span class="text-gray-600">16%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2.5">
+            <div class="bg-orange-500 h-2.5 rounded-full" style="width: 16%;"></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex justify-between mb-1">
+            <span>Score</span>
+            <span class="text-gray-600">8.0</span>
+          </div>
+          <div class="relative w-full bg-gray-200 rounded-full h-2.5">
+            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 80%;"></div>
+            <div class="absolute top-0 -translate-x-1/2 translate-y-1/2 left-4/5 w-4 h-4 bg-white border border-blue-500 rounded-full"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Section -->
+      <div class="w-full md:w-1/2 md:pl-12">
+        <h1 class="text-3xl font-bold mb-6">Get your investment right and secure</h1>
+        <p class="text-gray-600 mb-6">Our Ai Model will work closely with you to develop a customized investment plan that aligns with your goals, while also managing risk and ensuring a diversified portfolio.</p>
+        <button class="bg-blue-500 text-white py-2 px-6 rounded-lg shadow-md hover:bg-blue-600">Learn More</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="founders" class="bg-gray-100">
+  <div class="flex justify-center items-center min-h-screen">
+      <div class="testimonial-container w-full max-w-4xl">
+          <div class="testimonial active bg-blue-500 text-white p-8 rounded-lg max-w-lg shadow-lg">
+              <div class="text-sm uppercase tracking-wide text-blue-200 font-semibold mb-4">What our user says</div>
+              <p class="text-2xl font-bold mb-6">"At Vestorix, we're harnessing the transformative power of AI to democratize access to expert financial guidance, empowering investors to make informed decisions and unlock their full potential."</p>
+              <div class="flex items-center mt-4">
+                  <img src="ofc.png" alt="User Profile" class="rounded-full w-18 h-16 mr-3">
+                  <div class="text-lg font-medium">Hari Marathi</div>
+              </div>
+          </div>
+          
+          <div class="testimonial bg-green-500 text-white p-8 rounded-lg max-w-lg shadow-lg">
+              <div class="text-sm uppercase tracking-wide text-green-200 font-semibold mb-4">Founder Quote</div>
+              <p class="text-2xl font-bold mb-6">"Our mission at Vestorix is to revolutionize the world of finance by merging human expertise with AI-driven insights, providing unparalleled clarity and confidence for investors navigating the complexities of the market."</p>
+              <div class="flex items-center mt-4">
+                  <img src="uday.jpg" alt="Founder Profile" class="rounded-full w-18 h-16 mr-3">
+                  <div class="text-lg font-medium">V Uday</div>
+              </div>
+          </div>
+          
+          <div class="testimonial bg-purple-500 text-white p-8 rounded-lg max-w-lg shadow-lg">
+              <div class="text-sm uppercase tracking-wide text-purple-200 font-semibold mb-4">Founder Quote</div>
+              <p class="text-2xl font-bold mb-6">"With Vestorix, we're redefining the future of financial advice, leveraging the latest advancements in AI to deliver personalized, data-driven guidance that helps investors achieve their goals, while setting a new standard for transparency, trust, and innovation in the fintech industry."</p>
+              <div class="flex items-center mt-4">
+                  <img src="om.jpg" alt="Founder Profile" class="rounded-full w-18 h-16 mr-3">
+                  <div class="text-lg font-medium">Om B</div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div id="contact" class="bg-gray-100">
+
+    <div class="max-w-xl mx-auto my-10 p-4 bg-white shadow-lg rounded-lg">
+        <h2 class="text-2xl font-semibold text-center text-blue-600 mb-4">Contact Us</h2>
+
+        <form action="contact.php" method="POST">
+            <div class="mb-3">
+                <label for="name" class="block text-sm font-medium text-blue-600">Name</label>
+                <input type="text" id="name" name="name" class="w-full p-2 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Your Name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="block text-sm font-medium text-blue-600">Email</label>
+                <input type="email" id="email" name="email" class="w-full p-2 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Your Email" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="message" class="block text-sm font-medium text-blue-600">Message</label>
+                <textarea id="message" name="message" rows="2" class="w-full p-2 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Your Message" required></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-2 mt-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Send Message</button>
+        </form>
+    </div>
+
+  </div>
+
+  
+  <footer>
+    <div style="background-color: #2c3e50; color: white; padding: 20px 0;">
+      <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+        
+        <!-- Copyright -->
+        <div>
+          <p>&copy; 2024 Fusionneat Tech. All Rights Reserved.</p>
+        </div>
+        
+        <!-- Useful Links -->
+        <div style="margin-top: 15px;">
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+            <li><a href="/about" style="color: white; text-decoration: none;">About Us</a></li>
+            <li><a href="/services" style="color: white; text-decoration: none;">Services</a></li>
+            <li><a href="/contact" style="color: white; text-decoration: none;">Contact</a></li>
+            <li><a href="/privacy-policy" style="color: white; text-decoration: none;">Privacy Policy</a></li>
+            <li><a href="/terms-of-service" style="color: white; text-decoration: none;">Terms of Service</a></li>
+            <li><a href="/career" style="color: white; text-decoration: none;">Career</a></li>
+            <li><a href="/faq" style="color: white; text-decoration: none;">FAQ</a></li>
+            <li><a href="blog.html" style="color: white; text-decoration: none;">Blog</a></li>
+            <li><a href="/support" style="color: white; text-decoration: none;">Support</a></li>
+            <li><a href="/partners" style="color: white; text-decoration: none;">Partners</a></li>
+          </ul>
+        </div>
+  
+        <!-- Social Media Links -->
+        <div style="margin-top: 15px;">
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; gap: 15px;">
+            <li><a href="https://facebook.com" style="color: white; text-decoration: none;">Facebook</a></li>
+            <li><a href="https://twitter.com" style="color: white; text-decoration: none;">Twitter</a></li>
+            <li><a href="https://linkedin.com" style="color: white; text-decoration: none;">LinkedIn</a></li>
+            <li><a href="https://instagram.com" style="color: white; text-decoration: none;">Instagram</a></li>
+          </ul>
+        </div>
+  
+      </div>
+    </div>
+  </footer>
+  
+  <!-- JavaScript -->
+  <script>
+const typewriterText = document.getElementById('typewriter-text');
+    const messages = [
+      "AI-Driven Financial Insights",
+      "Accurate Predictions and Advice"
+    ];
+
+    let messageIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function type() {
+      const currentMessage = messages[messageIndex];
+      const displayText = isDeleting
+        ? currentMessage.substring(0, charIndex--)
+        : currentMessage.substring(0, charIndex++);
+
+      typewriterText.textContent = displayText;
+
+      if (!isDeleting && charIndex === currentMessage.length) {
+        setTimeout(() => (isDeleting = true), 1000); // Pause before deleting
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        messageIndex = (messageIndex + 1) % messages.length; // Loop through messages
+      }
+
+      const speed = isDeleting ? 50 : 100; // Adjust typing speed
+      setTimeout(type, speed);
+    }
+
+    type();
+    AOS.init();
+    
+
+    const modernCtx = document.getElementById('modernBarChart').getContext('2d');
+        new Chart(modernCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Total In', 'Total Out'],
+                datasets: [{
+                    label: 'Amount',
+                    data: [1593, 1192],
+                    backgroundColor: ['#5D9CEC', '#A6C9F8'],
+                    borderRadius: 12,
+                    barThickness: 30,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#4A4A4A',
+                            font: {
+                                size: 14
+                            }
+                        }
+                    },
+                    y: {
+                        grid: {
+                            color: '#E0E0E0',
+                            lineWidth: 1
+                        },
+                        ticks: {
+                            color: '#4A4A4A',
+                            font: {
+                                size: 12
+                            },
+                            beginAtZero: true
+                        }
+                    }
+                },
+                layout: {
+                    padding: {
+                        top: 20,
+                        bottom: 20
+                    }
+                },
+                elements: {
+                    bar: {
+                        borderSkipped: false
+                    }
+                }
+            }
+        });
+
+        function animateBalance() {
+            let totalBalance = 0;
+            let cashBalance = 0;
+            let aaplBalance = 0;
+            let tslaBalance = 0;
+            let snapBalance = 0;
+
+            const totalBalanceTarget = 49102.94;
+            const cashBalanceTarget = 38840.02;
+            const aaplBalanceTarget = 6921.00;
+            const tslaBalanceTarget = 4201.00;
+            const snapBalanceTarget = 1102.00;
+
+            const balanceChange = document.getElementById("balanceChange");
+            const totalBalanceElement = document.getElementById("totalBalance");
+            const cashBalanceElement = document.getElementById("cashBalance");
+            const aaplBalanceElement = document.getElementById("aaplBalance");
+            const tslaBalanceElement = document.getElementById("tslaBalance");
+            const snapBalanceElement = document.getElementById("snapBalance");
+            const balanceMeter = document.getElementById("balanceMeter");
+
+            let startTime = null;
+
+            function updateProgressBar() {
+                const currentTime = Date.now();
+                if (!startTime) startTime = currentTime;
+
+                let progress = Math.min((currentTime - startTime) / 3000, 1);
+                let totalPercentage = (progress * totalBalanceTarget) / totalBalanceTarget;
+                let cashPercentage = (progress * cashBalanceTarget) / totalBalanceTarget;
+                let aaplPercentage = (progress * aaplBalanceTarget) / totalBalanceTarget;
+                let tslaPercentage = (progress * tslaBalanceTarget) / totalBalanceTarget;
+                let snapPercentage = (progress * snapBalanceTarget) / totalBalanceTarget;
+
+                totalBalance = totalBalanceTarget * progress;
+                totalBalanceElement.textContent = `$${totalBalance.toFixed(2)}`;
+
+                cashBalance = cashBalanceTarget * progress;
+                aaplBalance = aaplBalanceTarget * progress;
+                tslaBalance = tslaBalanceTarget * progress;
+                snapBalance = snapBalanceTarget * progress;
+
+                cashBalanceElement.textContent = `$${cashBalance.toFixed(2)}`;
+                aaplBalanceElement.textContent = `$${aaplBalance.toFixed(2)}`;
+                tslaBalanceElement.textContent = `$${tslaBalance.toFixed(2)}`;
+                snapBalanceElement.textContent = `$${snapBalance.toFixed(2)}`;
+
+                balanceMeter.children[0].style.width = `${(cashPercentage * 100).toFixed(2)}%`;
+                balanceMeter.children[1].style.width = `${(aaplPercentage * 100).toFixed(2)}%`;
+                balanceMeter.children[2].style.width = `${(tslaPercentage * 100).toFixed(2)}%`;
+                balanceMeter.children[3].style.width = `${(snapPercentage * 100).toFixed(2)}%`;
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateProgressBar);
+                } else {
+                    balanceChange.textContent = `+4.25%`;
+                }
+            }
+
+            updateProgressBar();
+        }
+
+        window.onload = function () {
+            animateBalance();
+        };
+
+        function animateStockPrice(elementId, startValue, endValue, duration) {
+            let startTime = null;
+            const element = document.getElementById(elementId);
+
+            function updatePrice(currentTime) {
+                if (!startTime) startTime = currentTime;
+                const progress = (currentTime - startTime) / duration;
+                const currentValue = startValue + (endValue - startValue) * progress;
+                element.textContent = `$${currentValue.toFixed(2)}`;
+                if (progress < 1) {
+                    requestAnimationFrame(updatePrice);
+                }
+            }
+
+            requestAnimationFrame(updatePrice);
+        }
+
+        animateStockPrice('price-tsla', 100, 107, 2000);
+        animateStockPrice('price-aapl', 120, 124.78, 2000);
+        animateStockPrice('price-amzn', 80, 84.48, 2000);
+
+
+        let currentIndex = 0;
+        const testimonials = document.querySelectorAll('.testimonial');
+
+        function showNextTestimonial() {
+            // Remove active class from current testimonial
+            testimonials[currentIndex].classList.remove('active');
+            
+            // Move to the next testimonial
+            currentIndex = (currentIndex + 1) % testimonials.length;
+            
+            // Add active class to next testimonial
+            testimonials[currentIndex].classList.add('active');
+        }
+
+        // Start the cycle with a 4-second delay between each testimonial
+        setInterval(showNextTestimonial, 4000);
+  </script>
+</div>
+</html>
